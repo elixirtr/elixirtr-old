@@ -19,6 +19,7 @@ defmodule ExtrWeb.Router do
     get "/", PageController, :index
 
     resources "/users", UserController
+    resources "/companies", CompanyController
   end
 
   # Other scopes may use custom stacks.
