@@ -47,7 +47,8 @@ defmodule Extr.MixProject do
       # authentication
       {:bcrypt_elixir, "~>  2.0"},
 
-      # dev
+      # dev & test
+      {:faker, "~> 0.12", only: [:dev, :test]},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end

@@ -1,30 +1,20 @@
-<h1>Listing Companies</h1>
+<h1><%= gettext "Companies" %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Logo</th>
+<span><%= link "Add a Company", to: Routes.user_path(@conn, :new), class: "button" %></span>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for company <- @companies do %>
-    <tr>
-      <td><%= company.name %></td>
-      <td><%= company.title %></td>
-      <td><%= company.logo %></td>
-
-      <td>
-        <%= link "Show", to: Routes.company_path(@conn, :show, company) %>
-        <%= link "Edit", to: Routes.company_path(@conn, :edit, company) %>
-        <%= link "Delete", to: Routes.company_path(@conn, :delete, company), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Company", to: Routes.company_path(@conn, :new) %></span>
+<div class="row companies">
+  <%= for {company, i} <- Enum.with_index(@companies) do %>
+    <div class="column column-25">
+      <div class="company">
+        <div class="avatar">
+          <img src='<%= company.logo %>' alt="<%= company.name %>">
+        </div>
+        <h4><%= company.name %></h4>
+        <p>
+          <%= company.title %>
+        </p>
+      </div>
+    </div>
+    <%= if rem(i + 1, 4) == 0 do %> </div><div class="row companies"> <% end %>
+  <% end %>
+</div>

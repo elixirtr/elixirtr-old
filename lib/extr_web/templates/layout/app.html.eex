@@ -15,25 +15,49 @@
             <img class="img" src='<%= Routes.static_path(@conn, "/images/extr_logo.png") %>' />
           </a>
           <ul class="navigation-list float-right">
-            <li class="navigation-item"><a class="navigation-link" href='<%= Routes.user_path(@conn, :index) %>' title="Topluluk Üyeleri">Topluluk Üyeleri</a></li>
-            <li class="navigation-item"><a class="navigation-link" href='<%= Routes.company_path(@conn, :index) %>' title="Şirketler">Şirketler</a></li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='<%= Routes.user_path(@conn, :index) %>' title='<%= gettext "Alchemists" %>'><%= gettext "Alchemists" %></a>
+            </li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='<%= Routes.company_path(@conn, :index) %>' title='<%= gettext "Companies" %>'><%= gettext "Companies" %></a>
+            </li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='#' title='<%= gettext "Tutorials" %>'><%= gettext "Tutorials" %></a>
+            </li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='#' title='<%= gettext "Slack Group" %>'><%= gettext "Slack Group" %></a>
+            </li>
           </ul>
         </section>
       </nav>
-      <header class="header" id="home" style='background-image: url(<%= Routes.static_path(@conn, "/images/bg.jpg") %>)'>
-        <section class="container">
-          <h1 class="title">Elixir Türkiye</h1>
-          <p class="description">Geliştirici topluluğuna hoşgeldiniz!</p>
-          <a class="button" href="#join" title="Bize katılın">Bize katılın</a>
+
+      <%= if Phoenix.Controller.controller_module(@conn) == :"Elixir.ExtrWeb.PageController" && Phoenix.Controller.action_name(@conn) == :index do %>
+        <section class="header">
+          <div class="container">
+            <h1><%= gettext("Welcome to <code>%{name}</code> community", name: "`elixir |> turkiye()`") |> raw() %></h1>
+            <p>
+              <%= gettext "Join us if you're passionate about Elixir or wondering with Elixir." %><br>
+              <%= gettext "We are going to grow alchemists together." %><br>
+              
+              <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an alchemists" %></a>
+            </p>
+          </div>
         </section>
-      </header>
+      <% end %>
+
       <div class="container">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
         <%= render @view_module, @view_template, assigns %>
       </div>
-    </main>
 
+      <section class="footer">
+        <div class="container">
+          <p><a href="https://elixirturkiye.com" title="elixir |> turkiye()" target="_blank"><%= Date.utc_today().year |> to_string %><code>&copy; elixir |> turkiye()</code></a></p>
+        </div>
+      </section>
+    </main>
 
     <script type="text/javascript" src='<%= Routes.static_path(@conn, "/js/app.js") %>'></script>
   </body>

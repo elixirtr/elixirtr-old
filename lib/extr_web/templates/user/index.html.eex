@@ -1,31 +1,17 @@
-<h1>Listing Users</h1>
+<h1><%= gettext "Alchemists" %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th>Email</th>
-      <th>Password digest</th>
+<span><%= link "Become an Alchemist", to: Routes.user_path(@conn, :new), class: "button" %></span>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for user <- @users do %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.title %></td>
-      <td><%= user.email %></td>
-
-      <td>
-        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
-        <%= link "Edit", to: Routes.user_path(@conn, :edit, user) %>
-        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
+<div class="row alchemists">
+  <%= for {user, i} <- Enum.with_index(@users) do %>
+    <div class="column column-25">
+      <div class="alchemist">
+        <h4><%= user.name %></h4>
+        <p>
+          <%= user.email %>
+        </p>
+      </div>
+    </div>
+    <%= if rem(i + 1, 4) == 0 do %> </div><div class="row alchemists"> <% end %>
+  <% end %>
+</div>
