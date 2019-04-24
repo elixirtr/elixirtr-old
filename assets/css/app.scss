@@ -130,6 +130,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     .avatar {
       max-width: 65%;
@@ -141,8 +142,39 @@ body {
       }
     }
 
+    h4 {
+      display: inline-block;
+      max-width: 99%;
+      margin: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     p {
       font-size: 1.2rem;
+    }
+  }
+}
+
+ul.pagination {
+  list-style: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  li {
+    margin: 1rem;
+    &.active {
+      background-color: #eee;
+      border: 0.2rem solid #eee;
+      border-radius: 0.5rem;
+    }
+    a {
+      display: inline-block;
+      min-width: 3rem;
+      text-align: center;
+      padding: 0.5rem;
     }
   }
 }

@@ -1,12 +1,22 @@
 defmodule ExtrWeb.CompanyController do
   use ExtrWeb, :controller
 
+  alias Extr.Repo
   alias Extr.Corporation
   alias Extr.Corporation.Company
 
-  def index(conn, _params) do
-    companies = Corporation.list_companies()
-    render(conn, "index.html", companies: companies)
+  def index(conn, params) do
+    companies =
+      Company
+      |> Repo.paginate(params)
+
+    render(conn, "index.html",
+      companies: companies,
+      page_number: companies.page_number,
+      page_size: companies.page_size,
+      total_pages: companies.total_pages,
+      total_entries: companies.total_entries
+    )
   end
 
   def new(conn, _params) do

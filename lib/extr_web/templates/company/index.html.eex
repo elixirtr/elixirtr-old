@@ -3,7 +3,7 @@
 <span><%= link "Add a Company", to: Routes.user_path(@conn, :new), class: "button" %></span>
 
 <div class="row companies">
-  <%= for {company, i} <- Enum.with_index(@companies) do %>
+  <%= for {company, i} <- Enum.with_index(@companies.entries) do %>
     <div class="column column-25">
       <div class="company">
         <div class="avatar">
@@ -18,3 +18,5 @@
     <%= if rem(i + 1, 4) == 0 do %> </div><div class="row companies"> <% end %>
   <% end %>
 </div>
+
+<%= pagination_links @conn, @companies %>

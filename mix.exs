@@ -47,6 +47,10 @@ defmodule Extr.MixProject do
       # authentication
       {:bcrypt_elixir, "~>  2.0"},
 
+      # utils
+      {:scrivener_ecto, "~> 2.0"},
+      {:scrivener_html, "~> 1.8"},
+
       # dev & test
       {:faker, "~> 0.12", only: [:dev, :test]},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
