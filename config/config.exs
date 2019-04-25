@@ -28,6 +28,28 @@ config :phoenix, :json_library, Jason
 # Use scrivener_html for generate pagination links
 config :scrivener_html, routes_helper: ExtrWeb.Router.Helpers
 
+config :oauth2,
+  serializers: %{
+    "application/vnd.api+json" => Jason,
+    "application/json" => Jason
+  }
+
+config :ueberauth, Ueberauth,
+  json_library: Jason,
+  providers: [
+    github: {Ueberauth.Strategy.Github, [default_scope: "user"]},
+    gitlab: {Ueberauth.Strategy.Gitlab, [default_scope: "read_user"]}
+  ]
+
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+  client_id: System.get_env("GITHUB_CLIENT_ID"),
+  client_secret: System.get_env("GITHUB_CLIENT_SECRET")
+
+config :ueberauth, Ueberauth.Strategy.Gitlab.OAuth,
+  client_id: System.get_env("GITLAB_CLIENT_ID"),
+  client_secret: System.get_env("GITLAB_CLIENT_SECRET"),
+  redirect_uri: System.get_env("GITLAB_REDIRECT_URI")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

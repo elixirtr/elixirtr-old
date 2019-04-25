@@ -5,11 +5,19 @@
     </div>
   <% end %>
 
-  <div class="center">
-    <button class="button button-outline button-github">
-      <span class="icon-github-circled"></span>
-      <%= gettext "Sign in with GitHub" %>
-    </button>
+  <div class="row">
+    <div class="column column-50">
+      <a href='<%= Routes.auth_path(@conn, :request, "github") %>' class="button button-outline button-github">
+        <i class="icon-github-circled-1"></i>
+        <%= gettext "Sign in with GitHub" %>
+      </a>
+    </div>
+    <div class="column column-50">
+      <a href='<%= Routes.auth_path(@conn, :request, "gitlab") %>' class="button button-outline button-gitlab">
+        <i class="icon-gitlab"></i>
+        <%= gettext "Sign in with GitLab" %>
+      </a>
+    </div>
   </div>
 
   <div class="separator or"></div>

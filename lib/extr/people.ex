@@ -4,6 +4,7 @@ defmodule Extr.People do
   """
 
   import Ecto.Query, warn: false
+
   alias Extr.Repo
 
   alias Extr.People.User
@@ -19,6 +20,34 @@ defmodule Extr.People do
   """
   def list_users do
     Repo.all(User)
+  end
+
+  @doc """
+  Gets a single user.
+
+  Raises `Ecto.NoResultsError` if the User does not exist.
+
+  ## Examples
+
+      iex> get_user_by!(email: "abc@gmail.com")
+      %User{}
+
+      iex> get_user_by!(email: "abc@def.com")
+      ** (Ecto.NoResultsError)
+
+      iex> get_user_by!(123)
+      ** (EArgumentError)
+
+  """
+  def get_user_by!(where) do
+    # @todo: check keywords is in the schema
+    cond do
+      Keyword.keyword?(where) ->
+        Repo.get_by!(User, where)
+
+      true ->
+        raise ArgumentError
+    end
   end
 
   @doc """

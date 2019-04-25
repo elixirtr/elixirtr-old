@@ -1,5 +1,5 @@
 <div class="form-box">
-  <h4>Edit Company</h4>
+  <h4><%= gettext "Update informations" %></h4>
 
   <%= render "form.html", Map.put(assigns, :action, Routes.company_path(@conn, :update, @company)) %>
 </div>

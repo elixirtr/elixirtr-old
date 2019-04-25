@@ -195,11 +195,25 @@ ul.pagination {
 .button-outline.button-github {
   border-color: #606c76 !important;
   color: #606c76 !important;
+  display: block;
+  width: 100%;
 }
 .button-outline.button-github:active,
 .button-outline.button-github:hover {
   border-color: #606c76 !important;
   background-color: #606c76 !important;
+  color: #eee !important;
+}
+.button-outline.button-gitlab {
+  border-color: #fca326 !important;
+  color: #fca326 !important;
+  display: block;
+  width: 100%;
+}
+.button-outline.button-gitlab:active,
+.button-outline.button-gitlab:hover {
+  border-color: #fca326 !important;
+  background-color: #fca326 !important;
   color: #eee !important;
 }
 
@@ -212,7 +226,7 @@ ul.pagination {
 .separator {
   position: relative;
   height: 0.2rem;
-  margin: 1rem;
+  margin: 1rem 0;
   background: #eee;
   &.or {
     &:after {

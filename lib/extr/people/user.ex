@@ -10,6 +10,9 @@ defmodule Extr.People.User do
     field :password, :string, virtual: true
     field :password_digest, :string
     field :title, :string
+    field :avatar, :string
+    field :oauth_uid, :string
+    field :oauth_provider, :string
 
     timestamps()
   end
@@ -17,8 +20,8 @@ defmodule Extr.People.User do
   @doc false
   def insert_changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :title, :email, :password])
-    |> validate_required([:name, :title, :email, :password])
+    |> cast(attrs, [:name, :title, :email, :password, :avatar, :oauth_uid, :oauth_provider])
+    |> validate_required([:name, :title, :email])
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/)
     |> validate_length(:password, min: 6)
