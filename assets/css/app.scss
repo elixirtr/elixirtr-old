@@ -1,6 +1,10 @@
 /* This file is for your main application css. */
 
 @import "milligram";
+@import "fontello/fontello-codes";
+@import "fontello/fontello-embedded";
+@import "fontello/fontello";
+
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&subset=latin-ext");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin-ext");
 
@@ -175,6 +179,51 @@ ul.pagination {
       min-width: 3rem;
       text-align: center;
       padding: 0.5rem;
+    }
+  }
+}
+
+.form-box {
+  border: 0.2rem solid #eee;
+  border-radius: 0.5rem;
+  width: 50rem;
+  padding: 3rem;
+  margin: 0 50%;
+  transform: translateX(-50%);
+}
+
+.button-outline.button-github {
+  border-color: #606c76 !important;
+  color: #606c76 !important;
+}
+.button-outline.button-github:active,
+.button-outline.button-github:hover {
+  border-color: #606c76 !important;
+  background-color: #606c76 !important;
+  color: #eee !important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.separator {
+  position: relative;
+  height: 0.2rem;
+  margin: 1rem;
+  background: #eee;
+  &.or {
+    &:after {
+      content: " or ";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(-0.75rem);
+      background: #fff;
+      line-height: 100%;
+      padding: 0 0.5rem;
+      font-size: 1.5rem;
     }
   }
 }

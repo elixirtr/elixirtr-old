@@ -1,6 +1,6 @@
 <h1><%= gettext "Companies" %></h1>
 
-<span><%= link "Add a Company", to: Routes.user_path(@conn, :new), class: "button" %></span>
+<span><%= link "Add a Company", to: Routes.company_path(@conn, :new), class: "button" %></span>
 
 <div class="row companies">
   <%= for {company, i} <- Enum.with_index(@companies.entries) do %>
