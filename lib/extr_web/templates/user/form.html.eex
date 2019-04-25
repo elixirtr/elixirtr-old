@@ -5,6 +5,15 @@
     </div>
   <% end %>
 
+  <div class="center">
+    <button class="button button-outline button-github">
+      <span class="icon-github-circled"></span>
+      <%= gettext "Sign in with GitHub" %>
+    </button>
+  </div>
+
+  <div class="separator or"></div>
+
   <%= label f, :name %>
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
@@ -17,11 +26,16 @@
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
-  <%= label f, :password_digest %>
-  <%= text_input f, :password_digest %>
-  <%= error_tag f, :password_digest %>
+  <%= label f, :password %>
+  <%= text_input f, :password %>
+  <%= error_tag f, :password %>
+
+  <%= label f, :password_confirmation %>
+  <%= text_input f, :password_confirmation %>
+  <%= error_tag f, :password_confirmation %>
 
   <div>
     <%= submit "Save" %>
+    <span class="float-right"><%= link "Back", to: Routes.user_path(@conn, :index), class: "button button-outline" %></span>
   </div>
 <% end %>

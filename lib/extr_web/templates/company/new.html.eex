@@ -1,0 +1,5 @@
+<div class="form-box">
+  <h4>New Company</h4>
+
+  <%= render "form.html", Map.put(assigns, :action, Routes.company_path(@conn, :create)) %>
+</div>

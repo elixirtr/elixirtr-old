@@ -1,12 +1,22 @@
 defmodule ExtrWeb.UserController do
   use ExtrWeb, :controller
 
+  alias Extr.Repo
   alias Extr.People
   alias Extr.People.User
 
-  def index(conn, _params) do
-    users = People.list_users()
-    render(conn, "index.html", users: users)
+  def index(conn, params) do
+    users =
+      User
+      |> Repo.paginate(params)
+
+    render(conn, "index.html",
+      users: users,
+      page_number: users.page_number,
+      page_size: users.page_size,
+      total_pages: users.total_pages,
+      total_entries: users.total_entries
+    )
   end
 
   def new(conn, _params) do

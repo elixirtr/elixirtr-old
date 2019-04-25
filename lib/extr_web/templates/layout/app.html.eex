@@ -4,27 +4,61 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Extr · Phoenix Framework</title>
+    <title>Elixir Türkiye Geliştirici Topluluğu</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+    <main class="wrapper">
+      <nav class="navigation">
+        <section class="container">
+          <a href='<%= Routes.page_path(@conn, :index) %>' class="navigation-title">
+            <img class="img" src='<%= Routes.static_path(@conn, "/images/extr_logo.png") %>' />
+          </a>
+          <ul class="navigation-list float-right">
+            <li class="navigation-item">
+              <a class="navigation-link" href='<%= Routes.user_path(@conn, :index) %>' title='<%= gettext "Alchemists" %>'><%= gettext "Alchemists" %></a>
+            </li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='<%= Routes.company_path(@conn, :index) %>' title='<%= gettext "Companies" %>'><%= gettext "Companies" %></a>
+            </li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='#' title='<%= gettext "Tutorials" %>'><%= gettext "Tutorials" %></a>
+            </li>
+            <li class="navigation-item">
+              <a class="navigation-link" href='#' title='<%= gettext "Slack Group" %>'><%= gettext "Slack Group" %></a>
+            </li>
           </ul>
-        </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
+        </section>
+      </nav>
+
+      <%= if Phoenix.Controller.controller_module(@conn) == :"Elixir.ExtrWeb.PageController" && Phoenix.Controller.action_name(@conn) == :index do %>
+        <section class="header">
+          <div class="container">
+            <h1><%= gettext("Welcome to <code>%{name}</code> community", name: "`elixir |> turkiye()`") |> raw() %></h1>
+            <p>
+              <%= gettext "Join us if you're passionate about Elixir or wondering with Elixir." %><br>
+              <%= gettext "We are going to grow alchemists together." %><br>
+              
+              <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an alchemists" %></a>
+            </p>
+          </div>
+        </section>
+      <% end %>
+
+      <div class="container">
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+        <%= render @view_module, @view_template, assigns %>
+      </div>
+
+      <section class="footer">
+        <div class="container">
+          <p><a href="https://elixirturkiye.com" title="elixir |> turkiye()" target="_blank"><%= Date.utc_today().year |> to_string %><code>&copy; elixir |> turkiye()</code></a></p>
+        </div>
       </section>
-    </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
     </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+
+    <script type="text/javascript" src='<%= Routes.static_path(@conn, "/js/app.js") %>'></script>
   </body>
 </html>
