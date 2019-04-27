@@ -1,6 +1,8 @@
 defmodule Extr.People.UserFromOAuth do
   @moduledoc false
 
+  import Ecto.Query, only: [from: 2]
+
   alias Ueberauth.Auth
 
   alias Extr.Repo
@@ -24,25 +26,30 @@ defmodule Extr.People.UserFromOAuth do
   def create_or_update(%Auth{} = auth) do
     info = basic_info(auth)
 
-    exist_user = Repo.get_by(User, email: info[:email])
+    case Repo.one(
+           from(
+             u in User,
+             where:
+               u.email == ^info.email and u.oauth_provider == ^to_string(auth.provider) and
+                 u.oauth_uid == ^to_string(auth.uid)
+           )
+         ) do
+      nil ->
+        People.create_user(info)
 
-    if exist_user do
-      People.create_user(info)
-    else
-      People.update_user(exist_user, info)
+      user ->
+        People.update_user(user, info)
     end
-
-    exist_user
   end
 
   defp basic_info(auth) do
-    %User{
+    %{
       name: name_from_auth(auth),
       title: description_from_auth(auth),
       email: email_from_auth(auth),
       avatar: avatar_from_auth(auth),
-      oauth_uid: auth.uid,
-      oauth_provider: auth.provider
+      oauth_uid: to_string(auth.uid),
+      oauth_provider: to_string(auth.provider)
     }
   end
 

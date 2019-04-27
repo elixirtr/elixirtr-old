@@ -10,17 +10,29 @@ defmodule ExtrWeb.Router do
     plug Ueberauth
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :ensure_authenticated do
   end
+
+  # pipeline :api do
+  #   plug :accepts, ["json"]
+  # end
 
   scope "/", ExtrWeb do
     pipe_through :browser
 
     get "/", PageController, :index
 
-    resources "/users", UserController
+    resources "/users", UserController, except: [:edit, :update, :delete]
     resources "/companies", CompanyController
+  end
+
+  scope "/", ExtrWeb do
+    pipe_through [:browser, :ensure_authenticated]
+
+    get "/profile", UserController, :edit
+    put "/profile", UserController, :update
+    delete "/delete", UserController, :delete
+    delete "/auth/logout", AuthController, :delete
   end
 
   scope "/auth", ExtrWeb do

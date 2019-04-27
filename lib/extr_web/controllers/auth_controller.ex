@@ -34,8 +34,8 @@ defmodule ExtrWeb.AuthController do
 
       {:error, reason} ->
         conn
-        |> put_flash(:error, reason)
-        |> redirect(to: Routes.user_path(conn, :index))
+        |> put_view(ExtrWeb.UserView)
+        |> render(:new, changeset: reason)
     end
   end
 end

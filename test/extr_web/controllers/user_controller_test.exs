@@ -58,8 +58,8 @@ defmodule ExtrWeb.UserControllerTest do
   describe "edit user" do
     setup [:create_user]
 
-    test "renders form for editing chosen user", %{conn: conn, user: user} do
-      conn = get(conn, Routes.user_path(conn, :edit, user))
+    test "renders form for editing chosen user", %{conn: conn} do
+      conn = get(conn, Routes.user_path(conn, :edit))
       assert html_response(conn, 200) =~ "Edit User"
     end
   end
@@ -67,8 +67,8 @@ defmodule ExtrWeb.UserControllerTest do
   describe "update user" do
     setup [:create_user]
 
-    test "redirects when data is valid", %{conn: conn, user: user} do
-      conn = put(conn, Routes.user_path(conn, :update, user), user: @update_attrs)
+    test "redirects when data is valid", %{conn: conn} do
+      conn = put(conn, Routes.user_path(conn, :update), user: @update_attrs)
       assert redirected_to(conn) == Routes.user_path(conn, :show, user)
 
       conn = get(conn, Routes.user_path(conn, :show, user))
@@ -76,7 +76,7 @@ defmodule ExtrWeb.UserControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do
-      conn = put(conn, Routes.user_path(conn, :update, user), user: @invalid_attrs)
+      conn = put(conn, Routes.user_path(conn, :update), user: @invalid_attrs)
       assert html_response(conn, 200) =~ "Edit User"
     end
   end
@@ -85,7 +85,7 @@ defmodule ExtrWeb.UserControllerTest do
     setup [:create_user]
 
     test "deletes chosen user", %{conn: conn, user: user} do
-      conn = delete(conn, Routes.user_path(conn, :delete, user))
+      conn = delete(conn, Routes.user_path(conn, :delete))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
 
       assert_error_sent 404, fn ->

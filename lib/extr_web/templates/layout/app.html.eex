@@ -27,6 +27,14 @@
             <li class="navigation-item">
               <a class="navigation-link" href='#' title='<%= gettext "Slack Group" %>'><%= gettext "Slack Group" %></a>
             </li>
+            <%= if !is_nil(Plug.Conn.get_session(@conn, :current_user)) do %>
+              <li class="navigation-item">
+                <a class="navigation-link" href='<%= Routes.user_path(@conn, :edit) %>' title='<%= gettext "Profile" %>'><%= gettext "Profile" %></a>
+              </li>
+              <li class="navigation-item">
+                <%= link(gettext("Logout"), to: "/auth/logout", method: :delete, class: "navigation-link") %>
+              </li>
+            <% end %>
           </ul>
         </section>
       </nav>
@@ -46,8 +54,12 @@
       <% end %>
 
       <div class="container">
-        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <%= if !is_nil(get_flash(@conn, :info)) do %>
+          <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <% end %>
+        <%= if !is_nil(get_flash(@conn, :error)) do %>
+          <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <% end %>
 
         <%= render @view_module, @view_template, assigns %>
       </div>
