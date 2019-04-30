@@ -1,5 +1,5 @@
 <div class="form-box">
-  <h4>New User</h4>
+  <h4><%= gettext "Become an Alchemist" %></h4>
 
   <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
 </div>

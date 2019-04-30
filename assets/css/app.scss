@@ -1,9 +1,7 @@
 /* This file is for your main application css. */
 
 @import "milligram";
-@import "fontello/fontello-codes";
-@import "fontello/fontello-embedded";
-@import "fontello/fontello";
+@import "fontello";
 
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&subset=latin-ext");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin-ext");
@@ -145,6 +143,9 @@ body {
         background: #eee;
       }
     }
+    .logo img {
+      padding: 3rem;
+    }
 
     h4 {
       display: inline-block;
@@ -159,6 +160,39 @@ body {
       font-size: 1.2rem;
     }
   }
+}
+
+.alert {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 36rem;
+  max-width: 96%;
+  background: #eee;
+  color: #333;
+  padding: 2rem;
+  border-radius: 0.5rem;
+
+  &.alert-danger {
+    background: #f56c6c;
+    color: #fff;
+  }
+  &.alert-info {
+    background: #4a90e2;
+    color: #fff;
+  }
+}
+
+input + .help-block {
+  position: relative;
+  top: -1.5rem;
+  font-style: italic;
+  color: #f56c6c;
+  font-size: 1rem;
+}
+
+body > .wrapper > .container {
+  margin-top: 3rem;
 }
 
 ul.pagination {
@@ -195,11 +229,25 @@ ul.pagination {
 .button-outline.button-github {
   border-color: #606c76 !important;
   color: #606c76 !important;
+  display: block;
+  width: 100%;
 }
 .button-outline.button-github:active,
 .button-outline.button-github:hover {
   border-color: #606c76 !important;
   background-color: #606c76 !important;
+  color: #eee !important;
+}
+.button-outline.button-gitlab {
+  border-color: #fca326 !important;
+  color: #fca326 !important;
+  display: block;
+  width: 100%;
+}
+.button-outline.button-gitlab:active,
+.button-outline.button-gitlab:hover {
+  border-color: #fca326 !important;
+  background-color: #fca326 !important;
   color: #eee !important;
 }
 
@@ -209,10 +257,31 @@ ul.pagination {
   align-items: center;
 }
 
+.social {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  li {
+    margin: 0 0.5rem 0 0;
+  }
+  li a {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 125%;
+    padding: 0.5rem;
+    background: #eee;
+    color: #333;
+    border-radius: 50%;
+  }
+}
+
 .separator {
   position: relative;
   height: 0.2rem;
-  margin: 1rem;
+  margin: 1rem 0;
   background: #eee;
   &.or {
     &:after {
@@ -228,6 +297,11 @@ ul.pagination {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
 pre,
 code {
   font-family: "Fira Mono", monospace;

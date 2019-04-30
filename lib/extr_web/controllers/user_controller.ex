@@ -1,13 +1,19 @@
 defmodule ExtrWeb.UserController do
   use ExtrWeb, :controller
 
+  import Ecto.Query, only: [from: 2]
+
   alias Extr.Repo
   alias Extr.People
   alias Extr.People.User
 
   def index(conn, params) do
     users =
-      User
+      from(
+        u in User,
+        order_by: [asc: :name],
+        preload: [:profiles]
+      )
       |> Repo.paginate(params)
 
     render(conn, "index.html",
@@ -41,14 +47,25 @@ defmodule ExtrWeb.UserController do
     render(conn, "show.html", user: user)
   end
 
-  def edit(conn, %{"id" => id}) do
-    user = People.get_user!(id)
+  def edit(conn, _params) do
+    user =
+      Repo.one(
+        from u in User,
+          where: u.id == ^Map.get(get_session(conn, :current_user), :id),
+          preload: [:profiles]
+      )
+
     changeset = People.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = People.get_user!(id)
+  def update(conn, %{"user" => user_params}) do
+    user =
+      Repo.one(
+        from u in User,
+          where: u.id == ^Map.get(get_session(conn, :current_user), :id),
+          preload: [:profiles]
+      )
 
     case People.update_user(user, user_params) do
       {:ok, user} ->
@@ -61,8 +78,9 @@ defmodule ExtrWeb.UserController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    user = People.get_user!(id)
+  def delete(conn, _params) do
+    user = get_session(conn, :current_user)
+
     {:ok, _user} = People.delete_user(user)
 
     conn

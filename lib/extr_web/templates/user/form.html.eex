@@ -1,18 +1,29 @@
 <%= form_for @changeset, @action, fn f -> %>
+
   <%= if @changeset.action do %>
-    <div class="alert alert-danger">
+    <div class="block-alert block-alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <div class="center">
-    <button class="button button-outline button-github">
-      <span class="icon-github-circled"></span>
-      <%= gettext "Sign in with GitHub" %>
-    </button>
-  </div>
+  <%= if is_nil(Plug.Conn.get_session(@conn, :current_user)) do %>
+    <div class="row">
+      <div class="column column-50">
+        <a href='<%= Routes.auth_path(@conn, :request, "github") %>' class="button button-outline button-github">
+          <i class="icon-github-circled-1"></i>
+          <%= gettext "Sign in with GitHub" %>
+        </a>
+      </div>
+      <div class="column column-50">
+        <a href='<%= Routes.auth_path(@conn, :request, "gitlab") %>' class="button button-outline button-gitlab">
+          <i class="icon-gitlab"></i>
+          <%= gettext "Sign in with GitLab" %>
+        </a>
+      </div>
+    </div>
 
-  <div class="separator or"></div>
+    <div class="separator or"></div>
+  <% end %>
 
   <%= label f, :name %>
   <%= text_input f, :name %>
@@ -34,8 +45,33 @@
   <%= text_input f, :password_confirmation %>
   <%= error_tag f, :password_confirmation %>
 
+  <%= if !is_nil(Plug.Conn.get_session(@conn, :current_user)) do %>
+    <div>
+      <%= submit "Save" %>
+    </div>
+    
+    <hr>
+    <div id="profile-form">
+      <%= label f, :profiles %>
+      <%= inputs_for f, :profiles, fn fp -> %>
+        <div class="row profile-input-row">
+          <div class="column">
+            <%= text_input fp, :name %>
+          </div>
+
+          <div class="column">
+            <%= text_input fp, :url %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <a href="#" id="add-profile"><%= gettext "Add profile" %></a>
+  <% end %>
+
   <div>
     <%= submit "Save" %>
     <span class="float-right"><%= link "Back", to: Routes.user_path(@conn, :index), class: "button button-outline" %></span>
   </div>
+
 <% end %>

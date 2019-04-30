@@ -20,7 +20,13 @@ defmodule Extr.MixProject do
   def application do
     [
       mod: {Extr.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :ueberauth,
+        :ueberauth_github,
+        :ueberauth_gitlab_strategy
+      ]
     ]
   end
 
@@ -46,6 +52,9 @@ defmodule Extr.MixProject do
 
       # authentication
       {:bcrypt_elixir, "~>  2.0"},
+      {:ueberauth, "~> 0.6"},
+      {:ueberauth_github, "~> 0.7"},
+      {:ueberauth_gitlab_strategy, "~> 0.2"},
 
       # utils
       {:scrivener_ecto, "~> 2.0"},

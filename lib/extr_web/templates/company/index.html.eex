@@ -1,13 +1,17 @@
-<h1><%= gettext "Companies" %></h1>
+<h1 class="center"><%= gettext "Companies" %></h1>
 
-<span><%= link "Add a Company", to: Routes.company_path(@conn, :new), class: "button" %></span>
+<%= if Plug.Conn.get_session(@conn, :current_user) do %>
+  <div class="center">
+    <span><%= link "Add a Company", to: Routes.company_path(@conn, :new), class: "button" %></span>
+  </div>
+<% end %>
 
 <div class="row companies">
   <%= for {company, i} <- Enum.with_index(@companies.entries) do %>
     <div class="column column-25">
       <div class="company">
-        <div class="avatar">
-          <img src='<%= company.logo %>' alt="<%= company.name %>">
+        <div class="avatar logo">
+          <img src='<%= company.logo %>' alt="<%= company.name %>" lazyload="on">
         </div>
         <h4><%= company.name %></h4>
         <p>

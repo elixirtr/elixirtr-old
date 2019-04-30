@@ -1,15 +1,28 @@
-<h1><%= gettext "Alchemists" %></h1>
+<h1 class="center"><%= gettext "Alchemists" %></h1>
 
-<span><%= link "Become an Alchemist", to: Routes.user_path(@conn, :new), class: "button" %></span>
+<%= if is_nil(Plug.Conn.get_session(@conn, :current_user)) do %>
+  <div class="center">
+    <span><%= link "Become an Alchemist", to: Routes.user_path(@conn, :new), class: "button" %></span>
+  </div>
+<% end %>
 
 <div class="row alchemists">
   <%= for {user, i} <- Enum.with_index(@users.entries) do %>
     <div class="column column-25">
       <div class="alchemist">
+        <div class="avatar">
+          <img src='<%= user.avatar %>' alt="<%= user.name %>" lazyload="on">
+        </div>
         <h4><%= user.name %></h4>
         <p>
           <%= user.email %>
         </p>
+        <ul class="social">
+          <%= for profile <- Enum.take(user.profiles, 3) do %>
+            <li><a href="<%= profile.url %>" target="_blank"><span class="icon-<%= profile.name %>"></span></a></li>
+          <% end %>
+          <li><a href="mailto:<%= user.email %>" target="_blank"><span class="icon-mail"></span></a></li>
+        </ul>
       </div>
     </div>
     <%= if rem(i + 1, 4) == 0 do %> </div><div class="row alchemists"> <% end %>
