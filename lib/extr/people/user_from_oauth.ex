@@ -53,18 +53,16 @@ defmodule Extr.People.UserFromOAuth do
     }
   end
 
-  defp name_from_auth(auth) do
-    if auth.info.name do
-      auth.info.name
-    else
-      name =
-        [auth.info.first_name, auth.info.last_name]
-        |> Enum.filter(&(&1 != nil and &1 != ""))
+  defp name_from_auth(%{info: %{name: name}}) when not is_nil(name), do: name
 
-      cond do
-        length(name) == 0 -> auth.info.nickname
-        true -> Enum.join(name, " ")
-      end
+  defp name_from_auth(auth) do
+    name =
+      [auth.info.first_name, auth.info.last_name]
+      |> Enum.filter(&(&1 != nil and &1 != ""))
+
+    case length(name) do
+      0 -> auth.info.nickname
+      _ -> Enum.join(name, " ")
     end
   end
 

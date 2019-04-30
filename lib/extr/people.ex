@@ -40,13 +40,9 @@ defmodule Extr.People do
 
   """
   def get_user_by!(where) do
-    # @todo: check keywords is in the schema
-    cond do
-      Keyword.keyword?(where) ->
-        Repo.get_by!(User, where)
-
-      true ->
-        raise ArgumentError
+    case Keyword.keyword?(where) do
+      true -> Repo.get_by!(User, where)
+      _ -> raise ArgumentError
     end
   end
 
