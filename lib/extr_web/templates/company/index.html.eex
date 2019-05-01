@@ -1,6 +1,6 @@
 <h1 class="center"><%= gettext "Companies" %></h1>
 
-<%= if Plug.Conn.get_session(@conn, :current_user) do %>
+<%= if @user_signed_in? do %>
   <div class="center">
     <span><%= link "Add a Company", to: Routes.company_path(@conn, :new), class: "button" %></span>
   </div>

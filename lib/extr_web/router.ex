@@ -26,6 +26,7 @@ defmodule ExtrWeb.Router do
 
     resources "/users", UserController, except: [:edit, :update, :delete]
     resources "/companies", CompanyController, only: [:index]
+    resources "/tutorials", TutorialController, only: [:index]
   end
 
   scope "/", ExtrWeb do
@@ -37,6 +38,7 @@ defmodule ExtrWeb.Router do
     delete "/auth/logout", AuthController, :delete
 
     resources "/companies", CompanyController
+    resources "/tutorials", TutorialController
   end
 
   scope "/auth", ExtrWeb do

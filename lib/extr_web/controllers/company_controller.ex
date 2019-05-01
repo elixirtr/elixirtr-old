@@ -25,7 +25,9 @@ defmodule ExtrWeb.CompanyController do
   end
 
   def create(conn, %{"company" => company_params}) do
-    case Corporation.create_company(company_params) do
+    case Corporation.create_company(
+           Map.merge(company_params, %{"added_by" => get_session(conn, :current_user_id)})
+         ) do
       {:ok, company} ->
         conn
         |> put_flash(:info, "Company created successfully.")

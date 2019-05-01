@@ -2,7 +2,6 @@ defmodule ExtrWeb.Plugs.PutCurrentUser do
   import Plug.Conn
 
   alias Extr.People
-  alias Extr.People.User
 
   def init(params), do: params
 

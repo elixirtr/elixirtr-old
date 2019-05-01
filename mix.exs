@@ -25,7 +25,8 @@ defmodule Extr.MixProject do
         :runtime_tools,
         :ueberauth,
         :ueberauth_github,
-        :ueberauth_gitlab_strategy
+        :ueberauth_gitlab_strategy,
+        :timex
       ]
     ]
   end
@@ -57,6 +58,8 @@ defmodule Extr.MixProject do
       {:ueberauth_gitlab_strategy, "~> 0.2"},
 
       # utils
+      {:timex, "~> 3.0"},
+      {:earmark, "~> 1.3"},
       {:scrivener_ecto, "~> 2.0"},
       {:scrivener_html, "~> 1.8"},
 

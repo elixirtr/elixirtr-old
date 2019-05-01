@@ -22,7 +22,7 @@
               <a class="navigation-link" href='<%= Routes.company_path(@conn, :index) %>' title='<%= gettext "Companies" %>'><%= gettext "Companies" %></a>
             </li>
             <li class="navigation-item">
-              <a class="navigation-link" href='#' title='<%= gettext "Tutorials" %>'><%= gettext "Tutorials" %></a>
+              <a class="navigation-link" href='<%= Routes.tutorial_path(@conn, :index) %>' title='<%= gettext "Tutorials" %>'><%= gettext "Tutorials" %></a>
             </li>
             <li class="navigation-item">
               <a class="navigation-link" href='#' title='<%= gettext "Slack Group" %>'><%= gettext "Slack Group" %></a>
