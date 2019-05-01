@@ -1,8 +1,8 @@
 <h1 class="center"><%= gettext "Alchemists" %></h1>
 
-<%= if is_nil(Plug.Conn.get_session(@conn, :current_user)) do %>
+<%= if !@user_signed_in? do %>
   <div class="center">
-    <span><%= link "Become an Alchemist", to: Routes.user_path(@conn, :new), class: "button" %></span>
+    <span><%= link gettext("Become an Alchemist"), to: Routes.user_path(@conn, :new), class: "button" %></span>
   </div>
 <% end %>
 

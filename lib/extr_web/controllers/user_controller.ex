@@ -51,7 +51,7 @@ defmodule ExtrWeb.UserController do
     user =
       Repo.one(
         from u in User,
-          where: u.id == ^Map.get(get_session(conn, :current_user), :id),
+          where: u.id == ^Map.get(Map.get(conn.assigns, :current_user, %{}), :id),
           preload: [:profiles]
       )
 
@@ -63,7 +63,7 @@ defmodule ExtrWeb.UserController do
     user =
       Repo.one(
         from u in User,
-          where: u.id == ^Map.get(get_session(conn, :current_user), :id),
+          where: u.id == ^Map.get(Map.get(conn.assigns, :current_user, %{}), :id),
           preload: [:profiles]
       )
 

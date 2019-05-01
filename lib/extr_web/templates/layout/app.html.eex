@@ -27,12 +27,16 @@
             <li class="navigation-item">
               <a class="navigation-link" href='#' title='<%= gettext "Slack Group" %>'><%= gettext "Slack Group" %></a>
             </li>
-            <%= if !is_nil(Plug.Conn.get_session(@conn, :current_user)) do %>
+            <%= if @user_signed_in? do %>
               <li class="navigation-item">
                 <a class="navigation-link" href='<%= Routes.user_path(@conn, :edit) %>' title='<%= gettext "Profile" %>'><%= gettext "Profile" %></a>
               </li>
               <li class="navigation-item">
                 <%= link(gettext("Logout"), to: "/auth/logout", method: :delete, class: "navigation-link") %>
+              </li>
+            <% else %>
+              <li class="navigation-item">
+                <%= link(gettext("Become an Alchemist"), to: Routes.user_path(@conn, :new), class: "navigation-link") %>
               </li>
             <% end %>
           </ul>

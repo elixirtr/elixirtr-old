@@ -7,10 +7,12 @@ defmodule ExtrWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ExtrWeb.Plugs.PutCurrentUser
     plug Ueberauth
   end
 
   pipeline :ensure_authenticated do
+    plug ExtrWeb.Plugs.EnsureAuthenticated
   end
 
   # pipeline :api do
@@ -23,7 +25,7 @@ defmodule ExtrWeb.Router do
     get "/", PageController, :index
 
     resources "/users", UserController, except: [:edit, :update, :delete]
-    resources "/companies", CompanyController
+    resources "/companies", CompanyController, only: [:index]
   end
 
   scope "/", ExtrWeb do
@@ -33,6 +35,8 @@ defmodule ExtrWeb.Router do
     put "/profile", UserController, :update
     delete "/delete", UserController, :delete
     delete "/auth/logout", AuthController, :delete
+
+    resources "/companies", CompanyController
   end
 
   scope "/auth", ExtrWeb do

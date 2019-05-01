@@ -20,31 +20,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const addProfileEl = document.getElementById("add-profile");
 
   if (addProfileEl !== null) {
+    const profileForm = document.getElementById("profile-form");
+
+    let changeFragmentIndex = fragment => {
+      var changed = fragment
+        .replace(
+          /_(\d+)_/,
+          `_${profileForm.querySelectorAll(".profile-input-row").length}_`
+        )
+        .replace(
+          /\[(\d+)\]/,
+          `[${profileForm.querySelectorAll(".profile-input-row").length}]`
+        );
+      console.log(changed);
+      return changed;
+    };
+
     addProfileEl.addEventListener("click", e => {
       e.preventDefault();
 
-      const profileForm = document.getElementById("profile-form");
-      const inputRows = document.querySelectorAll(".profile-input-row");
-      const newInputRow = inputRows[inputRows.length - 1].cloneNode(true);
-      profileForm.appendChild(newInputRow);
-
-      const inputs = newInputRow.querySelectorAll("input");
-      for (var i = 0; i <= inputs.length; i++) {
-        if (typeof inputs[i] !== "undefined") {
-          inputs[i].id = inputs[i].id.replace(
-            /_(\d+)_/,
-            `_${inputRows.length}_`
-          );
-          inputs[i].name = inputs[i].name.replace(
-            /\[(\d+)\]/,
-            `[${inputRows.length}]`
-          );
-          inputs[i].value = null;
-        }
-      }
+      const fragment = document
+        .createRange()
+        .createContextualFragment(
+          changeFragmentIndex(
+            '<div class="row profile-input-row">' +
+              '<div class="column"><input name="user[profiles][0][name]" type="text" value=""></div>' +
+              '<div class="column"><input name="user[profiles][0][url]" type="text" value=""></div>' +
+              "</div>"
+          )
+        );
+      profileForm.appendChild(fragment);
     });
-
-    const profileForm = addProfileEl.closest("form");
 
     profileForm.addEventListener("submit", e => {
       e.preventDefault();

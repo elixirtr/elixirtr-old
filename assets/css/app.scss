@@ -183,6 +183,32 @@ body {
   }
 }
 
+.block-alert {
+  background: #eee;
+  color: #333;
+  padding: 1rem;
+  margin: 0 0 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+
+  p {
+    margin: 0;
+  }
+
+  &.block-alert-danger {
+    background: #f56c6c;
+    color: #fff;
+  }
+  &.block-alert-success {
+    background: #9b4dca;
+    color: #fff;
+  }
+  &.block-alert-info {
+    background: #4a90e2;
+    color: #fff;
+  }
+}
+
 input + .help-block {
   position: relative;
   top: -1.5rem;

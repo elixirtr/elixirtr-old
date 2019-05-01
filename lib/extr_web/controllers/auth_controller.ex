@@ -28,7 +28,7 @@ defmodule ExtrWeb.AuthController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Successfully authenticated.")
-        |> put_session(:current_user, user)
+        |> put_session(:current_user_id, user.id)
         |> configure_session(renew: true)
         |> redirect(to: Routes.user_path(conn, :index))
 
