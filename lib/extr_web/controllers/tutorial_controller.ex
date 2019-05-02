@@ -8,7 +8,7 @@ defmodule ExtrWeb.TutorialController do
 
   def index(conn, params) do
     tutorials =
-      from(t in Tutorial, preload: [:user])
+      from(t in Tutorial, order_by: [desc: :inserted_at], preload: [:user])
       |> Repo.paginate(params)
 
     render(conn, "index.html", tutorials: tutorials)

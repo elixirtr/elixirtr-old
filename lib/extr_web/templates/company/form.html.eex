@@ -14,7 +14,7 @@
   <%= error_tag f, :title %>
 
   <%= label f, :logo %>
-  <%= file_input f, :logo %>
+  <%= text_input f, :logo %>
   <%= error_tag f, :logo %>
 
   <div>
