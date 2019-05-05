@@ -2,7 +2,7 @@ defmodule ExtrWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :extr
 
   socket "/socket", ExtrWeb.UserSocket,
-    websocket: true,
+    websocket: [timeout: 45_000],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.
