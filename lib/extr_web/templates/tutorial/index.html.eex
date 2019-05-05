@@ -1,0 +1,24 @@
+<h1>Tutorials</h1>
+
+<%= if @user_signed_in? do %>
+  <span><%= link "Add a Tutorial", to: Routes.tutorial_path(@conn, :new), class: "button" %></span>
+<% end %>
+
+<div class="posts-list">
+  <%= for tutorial <- @tutorials.entries do %>
+    <article class="post">
+      <h5>
+      <%= if !is_nil(tutorial.body) do %>
+        <a href='<%= Routes.tutorial_path(@conn, :show, tutorial) %>'><%= tutorial.title %></a>
+      <% else %>
+        <a href='<%= tutorial.url %>' target="_blank"><%= tutorial.title %></a>
+      <% end %>
+      </h5>
+      <p class="info">
+        <%= raw gettext("Posted by %{user} at %{date}", user: safe_to_string(link(tutorial.user.name, to: Routes.user_path(@conn, :show, tutorial.user))), date: Timex.from_now(tutorial.inserted_at)) %>
+      </p>
+    </article>
+  <% end %>
+</div>
+
+<%= pagination_links @conn, @tutorials %>

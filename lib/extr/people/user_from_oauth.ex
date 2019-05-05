@@ -8,6 +8,7 @@ defmodule Extr.People.UserFromOAuth do
   alias Extr.Repo
   alias Extr.People
   alias Extr.People.User
+  alias Extr.People.Profile
 
   def insert_or_update(%Auth{provider: :identity} = auth) do
     case validate_pass(auth.credentials) do
@@ -35,10 +36,30 @@ defmodule Extr.People.UserFromOAuth do
            )
          ) do
       nil ->
-        People.create_user(info)
+        case People.create_user(info) do
+          {:ok, user} ->
+            People.create_profile(%{
+              name: to_string(auth.provider),
+              url: auth.info.url,
+              user_id: user.id
+            })
+
+          {:error, reason} ->
+            {:error, reason}
+        end
 
       user ->
-        People.update_user(user, info)
+        q = from(p in Profile, where: p.user_id == ^user.id, select: fragment("count(?)", p.id))
+
+        if Repo.one(q) == 0 do
+          People.create_profile(%{
+            name: to_string(auth.provider),
+            url: html_url_from_auth(auth),
+            user_id: user.id
+          })
+        end
+
+        {:ok, user}
     end
   end
 
@@ -69,6 +90,12 @@ defmodule Extr.People.UserFromOAuth do
   defp email_from_auth(%{info: %{email: email}}), do: email
 
   defp description_from_auth(%{info: %{description: description}}), do: description
+
+  # github
+  defp html_url_from_auth(%{info: %{urls: %{html_url: html_url}}}), do: html_url
+
+  # gitlab
+  defp html_url_from_auth(%{info: %{urls: %{web_url: web_url}}}), do: web_url
 
   # github
   defp avatar_from_auth(%{info: %{urls: %{avatar_url: image}}}), do: image

@@ -20,7 +20,7 @@ body {
 .wrapper .container {
   max-width: 100rem;
 }
-.wrapper > .container {
+.wrapper > .navigation + .container {
   padding-bottom: 7.5rem;
   padding-top: 7.5rem;
 }
@@ -51,7 +51,8 @@ body {
   }
 }
 .navigation {
-  background: rgba($color: #eee, $alpha: 0.4);
+  background: rgba($color: #fff, $alpha: 0.9);
+  box-shadow: 0 1rem 1rem rgba($color: #eee, $alpha: 0.5);
   border-bottom: 0.1rem solid #d1d1d1;
   display: block;
   height: 8.2rem;
@@ -109,13 +110,15 @@ body {
   text-align: center;
 }
 
-.posts-grid {
+.posts-list {
   .post {
     border: 0.2rem solid #eee;
     border-radius: 0.5rem;
     padding: 1rem 1em 0;
+    margin: 0 0 1rem;
     p.info {
       font-size: 1.2rem;
+      margin: 1rem 0;
     }
   }
 }
@@ -135,16 +138,32 @@ body {
     overflow: hidden;
 
     .avatar {
-      max-width: 65%;
       margin-bottom: 1rem;
+      width: 96%;
+      height: 100px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+      a {
+        // display: block;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+      }
       img {
-        width: 100%;
+        max-width: 100%;
+        max-height: 100px;
+        height: auto;
         border-radius: 50%;
         background: #eee;
       }
     }
     .logo img {
-      padding: 3rem;
+      border-radius: initial;
+      background: initial;
     }
 
     h4 {
@@ -250,6 +269,10 @@ ul.pagination {
   padding: 3rem;
   margin: 0 50%;
   transform: translateX(-50%);
+
+  &.long {
+    width: 100%;
+  }
 }
 
 .button-outline.button-github {
@@ -323,11 +346,6 @@ ul.pagination {
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
 pre,
 code {
   font-family: "Fira Mono", monospace;

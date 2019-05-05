@@ -3,10 +3,12 @@ defmodule Extr.Corporation.Company do
   import Ecto.Changeset
 
   schema "companies" do
-    field :logo, :string
     field :name, :string
     field :title, :string
-    field :added_by, :id
+    field :logo, :string
+    field :url, :string
+
+    belongs_to(:user, Extr.People.User, foreign_key: :added_by)
 
     timestamps()
   end
@@ -14,7 +16,8 @@ defmodule Extr.Corporation.Company do
   @doc false
   def changeset(company, attrs) do
     company
-    |> cast(attrs, [:name, :title, :logo])
-    |> validate_required([:name, :title, :logo])
+    |> cast(attrs, [:name, :title, :logo, :url, :added_by])
+    |> cast_assoc(:user)
+    |> validate_required([:name, :title, :logo, :url, :added_by])
   end
 end

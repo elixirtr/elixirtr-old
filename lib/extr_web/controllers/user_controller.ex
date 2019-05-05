@@ -11,7 +11,13 @@ defmodule ExtrWeb.UserController do
     users =
       from(
         u in User,
-        order_by: [asc: :name],
+        order_by:
+          fragment(
+            "case when ? = ? then 0 else 1 end, ? asc",
+            u.id,
+            ^get_session(conn, :current_user_id),
+            u.name
+          ),
         preload: [:profiles]
       )
       |> Repo.paginate(params)

@@ -16,7 +16,7 @@ defmodule Extr.People.Profile do
   @doc false
   def changeset(profile, attrs) do
     profile
-    |> cast(attrs, [:name, :url])
+    |> cast(attrs, [:name, :url, :user_id])
     |> cast_assoc(:user)
     |> validate_required([:name, :url])
   end
