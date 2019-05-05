@@ -1,4 +1,4 @@
-<div class="form-box">
+<div class="form-box long">
   <h4>New Tutorial</h4>
 
   <%= render "form.html", Map.put(assigns, :action, Routes.tutorial_path(@conn, :create)) %>

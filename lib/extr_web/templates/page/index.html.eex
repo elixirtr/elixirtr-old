@@ -1,13 +1,15 @@
 <h2><%= gettext "Latest tutorials" %></h2>
 
-<div class="row posts-grid">
+<div class="row posts-list">
   <%= for tutorial <- @tutorials do %>
     <div class="column">
       <article class="post">
         <h5>
           <a href='<%= Routes.tutorial_path(@conn, :show, tutorial) %>'><%= tutorial.title %></a>
         </h5>
-        <p class="info"><%= tutorial.inserted_at %></p>
+        <p class="info">
+          <%= raw gettext("Posted by %{user} at %{date}", user: safe_to_string(link(tutorial.user.name, to: Routes.user_path(@conn, :show, tutorial.user))), date: Timex.from_now(tutorial.inserted_at)) %>
+        </p>
       </article>
     </div>
   <% end %>
