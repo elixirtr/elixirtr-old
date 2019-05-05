@@ -1,0 +1,17 @@
+version: '3'
+services:
+  elixirtr_build:
+    # build: .
+    image: kakkoyun/elixirtr:latest
+    environment:
+      MIX_ENV: prod
+    ports:
+      - 14000:4000
+  postgres_build:
+    image: postgres:11.2-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: extr_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres

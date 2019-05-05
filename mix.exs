@@ -66,7 +66,12 @@ defmodule Extr.MixProject do
 
       # dev & test
       {:faker, "~> 0.12", only: [:dev, :test]},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+
+      # Configuration and releases
+      {:distillery, "~> 2.0"},
+      # {:confex, "~> 3.4.0"},
+      # {:confex_config_provider, "~> 0.1.0"}
     ]
   end
 
