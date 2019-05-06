@@ -15,6 +15,39 @@
             <img class="img" src='<%= Routes.static_path(@conn, "/images/extr_logo.png") %>' />
           </a>
           <ul class="navigation-list float-right">
+            <!-- mobile-nav-start -->
+            <li class="navigation-item mobile-nav">
+              <a class="navigation-link" href="#mobile-nav" data-popover><%= gettext "Menu" %></a>
+              <div class="popover" id="mobile-nav">
+                <ul class="popover-list">
+                  <li class="popover-item">
+                    <a class="popover-link" href='<%= Routes.user_path(@conn, :index) %>' title='<%= gettext "Alchemists" %>'><%= gettext "Alchemists" %></a>
+                  </li>
+                  <li class="popover-item">
+                    <a class="popover-link" href='<%= Routes.company_path(@conn, :index) %>' title='<%= gettext "Companies" %>'><%= gettext "Companies" %></a>
+                  </li>
+                  <li class="popover-item">
+                    <a class="popover-link" href='<%= Routes.tutorial_path(@conn, :index) %>' title='<%= gettext "Tutorials" %>'><%= gettext "Tutorials" %></a>
+                  </li>
+                  <li class="popover-item">
+                    <a class="popover-link" href='#' title='<%= gettext "Slack Group" %>'><%= gettext "Slack Group" %></a>
+                  </li>
+                  <%= if @user_signed_in? do %>
+                    <li class="popover-item">
+                      <a class="popover-link" href='<%= Routes.user_path(@conn, :edit) %>' title='<%= gettext "Profile" %>'><%= gettext "Profile" %></a>
+                    </li>
+                    <li class="popover-item">
+                      <%= link(gettext("Logout"), to: "/auth/logout", method: :delete, class: "popover-link") %>
+                    </li>
+                  <% else %>
+                    <li class="popover-item">
+                      <%= link(gettext("Become an Alchemist"), to: Routes.user_path(@conn, :new), class: "popover-link") %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </li>
+            <!-- mobile-nav-end -->
             <li class="navigation-item">
               <a class="navigation-link" href='<%= Routes.user_path(@conn, :index) %>' title='<%= gettext "Alchemists" %>'><%= gettext "Alchemists" %></a>
             </li>
@@ -50,7 +83,7 @@
             <p>
               <%= gettext "Join us if you're passionate about Elixir or wondering with Elixir." %><br>
               <%= gettext "We are going to grow alchemists together." %><br>
-              
+
               <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an alchemists" %></a>
             </p>
           </div>
