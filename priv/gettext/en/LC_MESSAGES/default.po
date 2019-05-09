@@ -1,0 +1,134 @@
+## `msgid`s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove `msgid`s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use `mix gettext.extract --merge` or `mix gettext.merge`
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/extr_web/templates/company/new.html.eex:2
+msgid "Add a Company"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:69
+msgid "Add profile"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:24
+#: lib/extr_web/templates/layout/app.html.eex:24
+#: lib/extr_web/templates/layout/app.html.eex:52
+#: lib/extr_web/templates/layout/app.html.eex:52
+#: lib/extr_web/templates/user/index.html.eex:1
+msgid "Alchemists"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:44
+#: lib/extr_web/templates/layout/app.html.eex:72
+#: lib/extr_web/templates/user/index.html.eex:5
+#: lib/extr_web/templates/user/new.html.eex:2
+msgid "Become an Alchemist"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/company/index.html.eex:1
+#: lib/extr_web/templates/layout/app.html.eex:27
+#: lib/extr_web/templates/layout/app.html.eex:27
+#: lib/extr_web/templates/layout/app.html.eex:55
+#: lib/extr_web/templates/layout/app.html.eex:55
+msgid "Companies"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/company/index.html.eex:22
+msgid "Edit"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:84
+msgid "Join us if you're passionate about Elixir or wondering with Elixir."
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/page/index.html.eex:1
+msgid "Latest tutorials"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:40
+#: lib/extr_web/templates/layout/app.html.eex:68
+msgid "Logout"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:20
+msgid "Menu"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/page/index.html.eex:11
+#: lib/extr_web/templates/tutorial/index.html.eex:18
+msgid "Posted by %{user} at %{date}"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:37
+#: lib/extr_web/templates/layout/app.html.eex:37
+#: lib/extr_web/templates/layout/app.html.eex:65
+#: lib/extr_web/templates/layout/app.html.eex:65
+msgid "Profile"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:14
+msgid "Sign in with GitHub"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:20
+msgid "Sign in with GitLab"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:33
+#: lib/extr_web/templates/layout/app.html.eex:33
+#: lib/extr_web/templates/layout/app.html.eex:61
+#: lib/extr_web/templates/layout/app.html.eex:61
+msgid "Slack Group"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:30
+#: lib/extr_web/templates/layout/app.html.eex:30
+#: lib/extr_web/templates/layout/app.html.eex:58
+#: lib/extr_web/templates/layout/app.html.eex:58
+msgid "Tutorials"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/user/edit.html.eex:2
+msgid "Update alchemist's profile"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/company/edit.html.eex:2
+msgid "Update informations"
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:85
+msgid "We are going to grow alchemists together."
+msgstr ""
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:82
+msgid "Welcome to <code>%{name}</code> community"
+msgstr ""

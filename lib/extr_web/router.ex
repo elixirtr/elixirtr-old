@@ -24,6 +24,10 @@ defmodule ExtrWeb.Router do
 
     get "/", PageController, :index
 
+    resources "/users", UserController, only: [:index, :show, :new, :create]
+    resources "/companies", CompanyController
+    resources "/tutorials", TutorialController
+
     scope "/" do
       pipe_through [:ensure_authenticated]
 
@@ -31,14 +35,7 @@ defmodule ExtrWeb.Router do
       put "/profile", UserController, :update
       delete "/delete", UserController, :delete
       delete "/auth/logout", AuthController, :delete
-
-      resources "/companies", CompanyController
-      resources "/tutorials", TutorialController
     end
-
-    resources "/users", UserController, only: [:index, :show, :new, :create]
-    resources "/companies", CompanyController, only: [:index, :show]
-    resources "/tutorials", TutorialController, only: [:index, :show]
   end
 
   scope "/auth", ExtrWeb do

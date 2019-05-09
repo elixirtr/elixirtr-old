@@ -25,6 +25,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Localization
+config :extr, ExtrWeb.Gettext, default_locale: "tr", locales: ~w(en tr)
+config :timex, default_locale: "tr"
+
 # Use scrivener_html for generate pagination links
 config :scrivener_html, routes_helper: ExtrWeb.Router.Helpers
 

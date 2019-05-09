@@ -1,24 +1,24 @@
 <%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+      <p><%= gettext "Oops, something went wrong! Please check the errors below." %></p>
     </div>
   <% end %>
 
-  <%= label f, :name %>
+  <%= label f, :name do %> <%= gettext "Name" %> <% end %>
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
 
-  <%= label f, :title %>
+  <%= label f, :title do %> <%= gettext "Title" %> <% end %>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
-  <%= label f, :logo %>
+  <%= label f, :logo do %> <%= gettext "Logo" %> <% end %>
   <%= text_input f, :logo %>
   <%= error_tag f, :logo %>
 
   <div>
-    <%= submit "Save" %>
-    <span class="float-right"><%= link "Back", to: Routes.company_path(@conn, :index), class: "button button-outline" %></span>
+    <%= submit gettext("Save") %>
+    <span class="float-right"><%= link gettext("Back"), to: Routes.company_path(@conn, :index), class: "button button-outline" %></span>
   </div>
 <% end %>

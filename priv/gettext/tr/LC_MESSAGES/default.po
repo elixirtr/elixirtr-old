@@ -1,0 +1,231 @@
+# # `msgid`s in this file come from POT (.pot) files.
+# #
+# # Do not add, change, or remove `msgid`s manually here as
+# # they're tied to the ones in the corresponding POT file
+# # (with the same domain).
+# #
+# # Use `mix gettext.extract --merge` or `mix gettext.merge`
+# # to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: tr\n"
+"Plural-Forms: nplurals=2;\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#, elixir-format
+#: lib/extr_web/templates/company/index.html.eex:5
+#: lib/extr_web/templates/company/new.html.eex:2
+msgid "Add a Company"
+msgstr "Şirket Ekle"
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:69
+msgid "Add profile"
+msgstr "Profil ekle"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:24
+#: lib/extr_web/templates/layout/app.html.eex:24
+#: lib/extr_web/templates/layout/app.html.eex:52
+#: lib/extr_web/templates/layout/app.html.eex:52
+#: lib/extr_web/templates/user/index.html.eex:1
+msgid "Alchemists"
+msgstr "Alchemists"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:44
+#: lib/extr_web/templates/layout/app.html.eex:72
+#: lib/extr_web/templates/layout/app.html.eex:87
+#: lib/extr_web/templates/user/index.html.eex:5
+#: lib/extr_web/templates/user/new.html.eex:2
+msgid "Become an Alchemist"
+msgstr "Bir alchemist ol"
+
+#, elixir-format
+#: lib/extr_web/templates/company/index.html.eex:1
+#: lib/extr_web/templates/layout/app.html.eex:27
+#: lib/extr_web/templates/layout/app.html.eex:27
+#: lib/extr_web/templates/layout/app.html.eex:55
+#: lib/extr_web/templates/layout/app.html.eex:55
+msgid "Companies"
+msgstr "Firmalar"
+
+#, elixir-format
+#: lib/extr_web/templates/company/index.html.eex:22
+msgid "Edit"
+msgstr "Düzenle"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:84
+msgid "Join us if you're passionate about Elixir or wondering with Elixir."
+msgstr "Elixir’e gönül verdiysen ya da merak ediyorsan sen de bize katıl."
+
+#, elixir-format
+#: lib/extr_web/templates/page/index.html.eex:1
+msgid "Latest tutorials"
+msgstr "Son eklenen kaynaklar"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:40
+#: lib/extr_web/templates/layout/app.html.eex:68
+msgid "Logout"
+msgstr "Çıkış yap"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:20
+msgid "Menu"
+msgstr "Menü"
+
+#, elixir-format
+#: lib/extr_web/templates/page/index.html.eex:11
+#: lib/extr_web/templates/tutorial/index.html.eex:18
+msgid "Posted by %{user} at %{date}"
+msgstr "%{user} tarafından %{date} yayınlandı"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:37
+#: lib/extr_web/templates/layout/app.html.eex:37
+#: lib/extr_web/templates/layout/app.html.eex:65
+#: lib/extr_web/templates/layout/app.html.eex:65
+msgid "Profile"
+msgstr "Profil"
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:14
+msgid "Sign in with GitHub"
+msgstr "GitHub ile giriş yap"
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:20
+msgid "Sign in with GitLab"
+msgstr "GitLab ile giriş yap"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:33
+#: lib/extr_web/templates/layout/app.html.eex:33
+#: lib/extr_web/templates/layout/app.html.eex:61
+#: lib/extr_web/templates/layout/app.html.eex:61
+msgid "Slack Group"
+msgstr "Slack Grubu"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:30
+#: lib/extr_web/templates/layout/app.html.eex:30
+#: lib/extr_web/templates/layout/app.html.eex:58
+#: lib/extr_web/templates/layout/app.html.eex:58
+#: lib/extr_web/templates/tutorial/index.html.eex:1
+msgid "Tutorials"
+msgstr "Kaynaklar"
+
+#, elixir-format
+#: lib/extr_web/templates/user/edit.html.eex:2
+msgid "Update alchemist's profile"
+msgstr "Alchemist profilini güncelle"
+
+#, elixir-format
+#: lib/extr_web/templates/company/edit.html.eex:2
+msgid "Update informations"
+msgstr "Bilgileri güncelle"
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:85
+msgid "We are going to grow alchemists together."
+msgstr "Alchemist topluluğunu birlikte büyüteceğiz."
+
+#, elixir-format
+#: lib/extr_web/templates/layout/app.html.eex:82
+msgid "Welcome to <code>%{name}</code> community"
+msgstr "<code>%{name}</code> topluluğuna hoş geldin"
+
+#, elixir-format
+#: lib/extr_web/templates/company/form.html.eex:22
+#: lib/extr_web/templates/tutorial/form.html.eex:27
+#: lib/extr_web/templates/user/form.html.eex:74
+msgid "Back"
+msgstr "Geri"
+
+#, elixir-format
+#: lib/extr_web/templates/company/form.html.eex:4
+#: lib/extr_web/templates/tutorial/form.html.eex:5
+#: lib/extr_web/templates/user/form.html.eex:5
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr "Malesef bir şeyler ters gitti, lütfen hata kayıtlarına bakın."
+
+#, elixir-format
+#: lib/extr_web/templates/company/form.html.eex:21
+#: lib/extr_web/templates/tutorial/form.html.eex:26
+#: lib/extr_web/templates/user/form.html.eex:50
+#: lib/extr_web/templates/user/form.html.eex:73
+msgid "Save"
+msgstr "Kaydet"
+
+#, elixir-format
+#: lib/extr_web/templates/tutorial/index.html.eex:4
+msgid "Add a Tutorial"
+msgstr "Kaynak ekle"
+
+#, elixir-format
+#: lib/extr_web/templates/tutorial/new.html.eex:2
+msgid "New Tutorial"
+msgstr "Yeni kaynak"
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:36
+msgid "E-mail"
+msgstr "E-posta"
+
+#, elixir-format
+#: lib/extr_web/templates/company/form.html.eex:8
+#: lib/extr_web/templates/user/form.html.eex:28
+msgid "Name"
+msgstr "İsim"
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:40
+msgid "Password"
+msgstr "Parola"
+
+#, elixir-format
+#: lib/extr_web/templates/user/form.html.eex:44
+msgid "Password confirmation"
+msgstr "Parola tekrar"
+
+#, elixir-format
+#: lib/extr_web/templates/company/form.html.eex:12
+#: lib/extr_web/templates/tutorial/form.html.eex:9
+#: lib/extr_web/templates/user/form.html.eex:32
+msgid "Title"
+msgstr "Başlık"
+
+#, elixir-format
+#: lib/extr_web/templates/tutorial/form.html.eex:13
+msgid "Body"
+msgstr "Gövde"
+
+#, elixir-format
+#: lib/extr_web/templates/tutorial/form.html.eex:17
+msgid "Image"
+msgstr "Resim"
+
+#, elixir-format, fuzzy
+#: lib/extr_web/templates/company/form.html.eex:16
+msgid "Logo"
+msgstr "Logo"
+
+#, elixir-format
+#: lib/extr_web/templates/tutorial/form.html.eex:14
+msgid "Paste markdown here..."
+msgstr "Markdown içeriği yapıştırın..."
+
+#, elixir-format
+#: lib/extr_web/templates/tutorial/form.html.eex:21
+msgid "Url"
+msgstr "Bağlantı"
