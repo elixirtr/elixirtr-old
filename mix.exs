@@ -8,8 +8,8 @@ defmodule Extr.MixProject do
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
-      build_embedded: Mix.env == :prod,
-      start_permanent: Mix.env == :prod,
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
     ]
@@ -59,7 +59,8 @@ defmodule Extr.MixProject do
       {:ueberauth_gitlab_strategy, "~> 0.2"},
 
       # utils
-      {:timex, "~> 3.0"},
+      # {:timex, "~> 3.0"},
+      {:timex, git: "git@github.com:elixirtr/timex.git", branch: "turkish-translation"},
       {:earmark, "~> 1.3"},
       {:scrivener_ecto, "~> 2.0"},
       {:scrivener_html, "~> 1.8"},

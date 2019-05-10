@@ -1,6 +1,8 @@
 defmodule ExtrWeb.CompanyController do
   use ExtrWeb, :controller
 
+  plug ExtrWeb.Plugs.EnsureAuthenticated when action in ~w(new create edit update delete)a
+
   alias Extr.Repo
   alias Extr.Corporation
   alias Extr.Corporation.Company

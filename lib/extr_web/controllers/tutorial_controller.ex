@@ -1,6 +1,8 @@
 defmodule ExtrWeb.TutorialController do
   use ExtrWeb, :controller
 
+  plug ExtrWeb.Plugs.EnsureAuthenticated when action in ~w(new create edit update delete)a
+
   import Ecto.Query, only: [from: 2]
   alias Extr.Repo
   alias Extr.Resource

@@ -2,7 +2,7 @@
 
 <%= if @user_signed_in? do %>
   <div class="center">
-    <span><%= link "Add a Company", to: Routes.company_path(@conn, :new), class: "button" %></span>
+    <span><%= link gettext("Add a Company"), to: Routes.company_path(@conn, :new), class: "button" %></span>
   </div>
 <% end %>
 

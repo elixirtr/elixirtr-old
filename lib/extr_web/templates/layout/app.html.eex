@@ -84,7 +84,7 @@
               <%= gettext "Join us if you're passionate about Elixir or wondering with Elixir." %><br>
               <%= gettext "We are going to grow alchemists together." %><br>
 
-              <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an alchemists" %></a>
+              <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an Alchemist" %></a>
             </p>
           </div>
         </section>
