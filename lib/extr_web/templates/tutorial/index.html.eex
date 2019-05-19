@@ -14,6 +14,9 @@
         <a href='<%= tutorial.url %>' target="_blank"><%= tutorial.title %></a>
       <% end %>
       </h5>
+      <p>
+        <%= truncate(tutorial.body, length: 300, omission: "...") %>
+      </p>
       <p class="info">
         <%= raw gettext("Posted by %{user} at %{date}", user: safe_to_string(link(tutorial.user.name, to: Routes.user_path(@conn, :show, tutorial.user))), date: Timex.from_now(tutorial.inserted_at, Gettext.get_locale(ExtrWeb.Gettext))) %>
       </p>
