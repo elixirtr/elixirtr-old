@@ -2,17 +2,12 @@
   <%= link @tutorial.title, to: @tutorial.url, target: "_blank" %>
 </h1>
 
-<p class="info">
-  <%= raw safe_to_string(link(@tutorial.user.name, to: Routes.user_path(@conn, :show, @tutorial.user))) %> |
-  <%= Timex.format!(@tutorial.inserted_at, "%d %B %A, %Y", :strftime) %>
-</p>
-
 <%= if @user_signed_in? && @tutorial.added_by == @current_user.id do %>
-  <p><%= link gettext("Edit"), to: Routes.tutorial_path(@conn, :edit, @tutorial), class: "button" %></p>
+  <span><%= link "Edit", to: Routes.tutorial_path(@conn, :edit, @tutorial), class: "button" %></span>
 <% end %>
 
 <%= if !is_nil(@tutorial.image) do %>
-  <p><img src='<%= @tutorial.image %>' alt='<%= @tutorial.title %>' /></p>
+  <img src='<%= @tutorial.image %>' alt='<%= @tutorial.title %>' />
 <% end %>
 
 <%= if !is_nil(@tutorial.body) do %>

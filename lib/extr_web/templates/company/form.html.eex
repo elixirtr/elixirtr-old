@@ -13,7 +13,7 @@
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
-  <%= label f, :logo do %> <%= gettext "Logo" %> <% end %>
+  <%= label f, :logo %>
   <%= text_input f, :logo %>
   <%= error_tag f, :logo %>
 

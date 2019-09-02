@@ -44,6 +44,8 @@ defmodule Extr.People.UserFromOAuth do
               user_id: user.id
             })
 
+            {:ok, user}
+
           {:error, reason} ->
             {:error, reason}
         end

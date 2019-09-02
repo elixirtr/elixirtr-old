@@ -1,7 +1,7 @@
-<h1><%= gettext "Tutorials" %></h1>
+<h1>Tutorials</h1>
 
 <%= if @user_signed_in? do %>
-  <span><%= link gettext("Add a Tutorial"), to: Routes.tutorial_path(@conn, :new), class: "button" %></span>
+  <span><%= link "Add a Tutorial", to: Routes.tutorial_path(@conn, :new), class: "button" %></span>
 <% end %>
 
 <div class="posts-list">
@@ -14,11 +14,8 @@
         <a href='<%= tutorial.url %>' target="_blank"><%= tutorial.title %></a>
       <% end %>
       </h5>
-      <p>
-        <%= truncate(tutorial.body, length: 300, omission: "...") %>
-      </p>
       <p class="info">
-        <%= raw gettext("Posted by %{user} at %{date}", user: safe_to_string(link(tutorial.user.name, to: Routes.user_path(@conn, :show, tutorial.user))), date: Timex.from_now(tutorial.inserted_at, Gettext.get_locale(ExtrWeb.Gettext))) %>
+        <%= raw gettext("Posted by %{user} at %{date}", user: (if tutorial.user != nil, do: safe_to_string(link(tutorial.user.name, to: Routes.user_path(@conn, :show, tutorial.user))), else: "a deleted user"), date: Timex.from_now(tutorial.inserted_at)) %>
       </p>
     </article>
   <% end %>

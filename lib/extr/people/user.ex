@@ -15,6 +15,8 @@ defmodule Extr.People.User do
     field :oauth_provider, :string
 
     has_many :profiles, Extr.People.Profile, on_delete: :delete_all
+    has_many :companies, Extr.Corporation.Company, foreign_key: :added_by, on_delete: :nilify_all
+    has_many :tutorials, Extr.Resource.Tutorial, foreign_key: :added_by, on_delete: :nilify_all
 
     timestamps()
   end

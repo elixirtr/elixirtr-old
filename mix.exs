@@ -59,8 +59,7 @@ defmodule Extr.MixProject do
       {:ueberauth_gitlab_strategy, "~> 0.2"},
 
       # utils
-      # {:timex, "~> 3.0"},
-      {:timex, git: "git@github.com:elixirtr/timex.git", branch: "turkish-translation"},
+      {:timex, "~> 3.0"},
       {:earmark, "~> 1.3"},
       {:scrivener_ecto, "~> 2.0"},
       {:scrivener_html, "~> 1.8"},

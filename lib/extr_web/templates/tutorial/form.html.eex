@@ -2,29 +2,29 @@
 
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
-      <p><%= gettext "Oops, something went wrong! Please check the errors below." %></p>
+      <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <%= label f, :title do %> <%= gettext "Title" %> <% end %>
+  <%= label f, :title %>
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
-  <%= label f, :body do %> <%= gettext "Body" %> <% end %>
-  <%= textarea f, :body, placeholder: gettext("Paste markdown here...") %>
+  <%= label f, :body %>
+  <%= textarea f, :body, placeholder: "Paste markdown here..." %>
   <%= error_tag f, :body %>
 
-  <%= label f, :image do %> <%= gettext "Image" %> <% end %>
+  <%= label f, :image %>
   <%= text_input f, :image %>
   <%= error_tag f, :image %>
 
-  <%= label f, :url do %> <%= gettext "Url" %> <% end %>
+  <%= label f, :url %>
   <%= text_input f, :url %>
   <%= error_tag f, :url %>
 
   <div>
-    <%= submit gettext("Save") %>
-    <span class="float-right"><%= link gettext("Back"), to: Routes.tutorial_path(@conn, :index), class: "button button-outline" %></span>
+    <%= submit "Save" %>
+    <span class="float-right"><%= link "Back", to: Routes.tutorial_path(@conn, :index), class: "button button-outline" %></span>
   </div>
 
 <% end %>

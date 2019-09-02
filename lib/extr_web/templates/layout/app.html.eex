@@ -84,7 +84,7 @@
               <%= gettext "Join us if you're passionate about Elixir or wondering with Elixir." %><br>
               <%= gettext "We are going to grow alchemists together." %><br>
 
-              <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an Alchemist" %></a>
+              <a href='<%= Routes.user_path(@conn, :index) %>' class="button"><%= gettext "Become an alchemists" %></a>
             </p>
           </div>
         </section>
@@ -100,13 +100,13 @@
 
         <%= render @view_module, @view_template, assigns %>
       </div>
-
-      <section class="footer">
-        <div class="container">
-          <p><a href="https://elixirturkiye.com" title="elixir |> turkiye()" target="_blank"><%= Date.utc_today().year |> to_string %><code>&copy; elixir |> turkiye()</code></a></p>
-        </div>
-      </section>
     </main>
+
+    <section class="footer">
+      <div class="container">
+        <p><a href="https://elixirturkiye.com" title="elixir |> turkiye()" target="_blank"><%= Date.utc_today().year |> to_string %><code>&copy; elixir |> turkiye()</code></a></p>
+      </div>
+    </section>
 
     <script type="text/javascript" src='<%= Routes.static_path(@conn, "/js/app.js") %>'></script>
   </body>

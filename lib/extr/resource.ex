@@ -18,7 +18,7 @@ defmodule Extr.Resource do
 
   """
   def list_tutorials do
-    Repo.all(from t in Tutorial, preload: [:user])
+    Repo.all(Tutorial)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule Extr.Resource do
       ** (Ecto.NoResultsError)
 
   """
-  def get_tutorial!(id), do: Repo.one!(from t in Tutorial, where: t.id == ^id, preload: [:user])
+  def get_tutorial!(id), do: Repo.get!(Tutorial, id)
 
   @doc """
   Creates a tutorial.
