@@ -7,6 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :extr, ExtrWeb.Endpoint,
+  secret_key_base: "IlId3O++U4CFl8KoaCutd6wL7+YqtxjaT4OP5teWwD4t/onyVgjUQHut97YlCoYA",
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,

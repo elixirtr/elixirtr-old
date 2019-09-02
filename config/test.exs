@@ -3,6 +3,7 @@ use Mix.Config
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :extr, ExtrWeb.Endpoint,
+  secret_key_base: "IlId3O++U4CFl8KoaCutd6wL7+YqtxjaT4OP5teWwD4t/onyVgjUQHut97YlCoYA",
   http: [port: 4002],
   server: false
 

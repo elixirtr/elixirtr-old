@@ -13,7 +13,7 @@ config :extr,
 # Configures the endpoint
 config :extr, ExtrWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "IlId3O++U4CFl8KoaCutd6wL7+YqtxjaT4OP5teWwD4t/onyVgjUQHut97YlCoYA",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: ExtrWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Extr.PubSub, adapter: Phoenix.PubSub.PG2]
 
@@ -24,6 +24,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+# Localization
+config :extr, ExtrWeb.Gettext, default_locale: "tr", locales: ~w(en tr)
+config :timex, default_locale: "tr"
 
 # Use scrivener_html for generate pagination links
 config :scrivener_html, routes_helper: ExtrWeb.Router.Helpers

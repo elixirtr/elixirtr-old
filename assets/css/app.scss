@@ -84,6 +84,93 @@ main.wrapper {
     margin-right: 0;
   }
 }
+
+.navigation .mobile-nav {
+  display: none;
+}
+@media (max-width: 40rem) {
+  .navigation .navigation-list {
+    margin-right: 0;
+  }
+  .navigation .navigation-item:not(.mobile-nav) {
+    display: none;
+  }
+  .navigation .mobile-nav {
+    display: block;
+  }
+  *[class*="column-"] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+.popover {
+  background: #fff;
+  border: 0.1rem solid #d1d1d1;
+  border-radius: 0.4rem;
+  display: none;
+  filter: drop-shadow(0 0 0.6rem rgba(0, 0, 0, 0.1));
+  right: 0;
+  min-width: 13.4rem;
+  position: absolute;
+  top: 94%;
+}
+.popover.popover-open {
+  display: block;
+}
+.popover:after,
+.popover:before {
+  border: solid transparent;
+  border-color: transparent;
+  border-width: 1rem;
+  content: " ";
+  height: 0;
+  right: 0;
+  pointer-events: none;
+  position: absolute;
+  margin-right: 0.5rem;
+  top: 0;
+  width: 0;
+}
+.popover:after {
+  border-bottom-color: #fff;
+  transform: translate(-50%, -100%);
+}
+.popover:before {
+  border-bottom-color: #d1d1d1;
+  transform: translate(-50%, -102%);
+}
+.popover .popover-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.popover .popover-item {
+  margin: 0;
+  padding: 0;
+}
+.popover .popover-item:first-child .popover-link {
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+.popover .popover-item:last-child .popover-link {
+  border-bottom-width: 0;
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+.popover .popover-link {
+  border-bottom: 0.1rem solid #d1d1d1;
+  color: #606c76;
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.popover .popover-link:hover {
+  background: #9b4dca;
+  border-bottom-color: #9b4dca;
+  color: #fff;
+}
+
 .navigation .navigation-item {
   float: left;
   margin-bottom: 0;
@@ -91,7 +178,6 @@ main.wrapper {
   position: relative;
 }
 .navigation .img {
-  fill: #9b4dca;
   height: 7.4rem;
   position: relative;
   top: 0.3rem;
