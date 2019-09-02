@@ -49,7 +49,7 @@
     <div>
       <%= submit "Save" %>
     </div>
-    
+
     <hr>
     <div id="profile-form">
       <%= label f, :profiles %>
@@ -72,6 +72,15 @@
   <div>
     <%= submit "Save" %>
     <span class="float-right"><%= link "Back", to: Routes.user_path(@conn, :index), class: "button button-outline" %></span>
+
+    <%= if @user_signed_in? do %>
+
+      <hr>
+      <p class="center">
+        <%= link "Destroy my account", to: Routes.user_path(@conn, :delete), method: :delete, class: "button button-outline" %>
+      </p>
+
+    <% end %>
   </div>
 
 <% end %>

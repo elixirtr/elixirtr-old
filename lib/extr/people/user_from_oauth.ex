@@ -40,9 +40,11 @@ defmodule Extr.People.UserFromOAuth do
           {:ok, user} ->
             People.create_profile(%{
               name: to_string(auth.provider),
-              url: auth.info.url,
+              url: html_url_from_auth(auth),
               user_id: user.id
             })
+
+            {:ok, user}
 
           {:error, reason} ->
             {:error, reason}

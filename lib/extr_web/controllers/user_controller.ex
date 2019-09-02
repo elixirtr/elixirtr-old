@@ -85,12 +85,22 @@ defmodule ExtrWeb.UserController do
   end
 
   def delete(conn, _params) do
-    user = get_session(conn, :current_user)
+    user = Map.get(Map.get(conn, :assigns), :current_user)
 
-    {:ok, _user} = People.delete_user(user)
+    case People.delete_user(user) do
+      {:ok, _user} ->
+        delete_session(conn, :current_user_id)
+        Map.drop(conn.assigns, [:current_user, :user_signed_in?])
 
-    conn
-    |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: Routes.user_path(conn, :index))
+        conn
+        |> put_flash(:info, "User deleted successfully.")
+        |> configure_session(drop: true)
+        |> redirect(to: Routes.user_path(conn, :index))
+
+      _ ->
+        conn
+        |> put_flash(:notice, "User could not deleted.")
+        |> redirect(to: Routes.user_path(conn, :index))
+    end
   end
 end
